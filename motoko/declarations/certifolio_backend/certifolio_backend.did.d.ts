@@ -1,0 +1,56 @@
+import type { Principal } from '@dfinity/principal';
+import type { ActorMethod } from '@dfinity/agent';
+
+export interface Metadata {
+  'uri' : string,
+  'track' : string,
+  'date' : bigint,
+  'publisher' : Principal,
+  'name' : string,
+  'scope' : string,
+  'certificateId' : bigint,
+  'standing' : bigint,
+  'eventName' : string,
+}
+export type TokenId = bigint;
+export interface _SERVICE {
+  'addPublisher' : ActorMethod<[string], undefined>,
+  'addToBundle' : ActorMethod<[bigint, TokenId], undefined>,
+  'approve' : ActorMethod<[Principal, TokenId], undefined>,
+  'balanceOf' : ActorMethod<[Principal], [] | [bigint]>,
+  'createBundle' : ActorMethod<[Array<bigint>, string], bigint>,
+  'doIOwn' : ActorMethod<[bigint], boolean>,
+  'getApproved' : ActorMethod<[bigint], Principal>,
+  'getBatchMetadata' : ActorMethod<[Array<TokenId>], Array<Metadata>>,
+  'getBundle' : ActorMethod<[bigint], [] | [Array<bigint>]>,
+  'getBundleMetadata' : ActorMethod<[bigint], Array<Metadata>>,
+  'getBundleName' : ActorMethod<[bigint], [] | [string]>,
+  'getBundleOwned' : ActorMethod<[Principal], [] | [Array<bigint>]>,
+  'getBundleOwner' : ActorMethod<[bigint], [] | [Principal]>,
+  'getCertificateId' : ActorMethod<[TokenId], [] | [bigint]>,
+  'getCertificateOwned' : ActorMethod<[Principal], [] | [Array<TokenId>]>,
+  'getDate' : ActorMethod<[TokenId], [] | [bigint]>,
+  'getEventName' : ActorMethod<[TokenId], [] | [string]>,
+  'getMetadata' : ActorMethod<[TokenId], Metadata>,
+  'getName' : ActorMethod<[TokenId], [] | [string]>,
+  'getOwnedMetadata' : ActorMethod<[Principal], Array<Metadata>>,
+  'getPublisher' : ActorMethod<[TokenId], [] | [Principal]>,
+  'getPublisherName' : ActorMethod<[Principal], [] | [string]>,
+  'getScope' : ActorMethod<[TokenId], [] | [string]>,
+  'getStanding' : ActorMethod<[TokenId], [] | [bigint]>,
+  'getTrack' : ActorMethod<[TokenId], [] | [string]>,
+  'isApprovedForAll' : ActorMethod<[Principal, Principal], boolean>,
+  'mint' : ActorMethod<
+    [string, string, bigint, string, bigint, string, string],
+    bigint
+  >,
+  'name' : ActorMethod<[], string>,
+  'ownerOf' : ActorMethod<[TokenId], [] | [Principal]>,
+  'setApprovalForAll' : ActorMethod<[Principal, boolean], undefined>,
+  'symbol' : ActorMethod<[], string>,
+  'tokenURI' : ActorMethod<[TokenId], [] | [string]>,
+  'totalBundle' : ActorMethod<[], bigint>,
+  'totalSupply' : ActorMethod<[], bigint>,
+  'transferFrom' : ActorMethod<[Principal, Principal, bigint], undefined>,
+  'whoami' : ActorMethod<[], Principal>,
+}
